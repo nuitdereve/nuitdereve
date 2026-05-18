@@ -655,6 +655,8 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xwvzpbpj';
+
   function handleRSVP() {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName  = document.getElementById('lastName').value.trim();
@@ -669,15 +671,43 @@
       }
     });
     if (!valid) return;
-    const form = document.getElementById('rsvpForm');
-    form.style.transition = 'opacity 0.4s, transform 0.4s';
-    form.style.opacity = '0'; form.style.transform = 'translateY(-10px)';
-    setTimeout(() => {
-      form.style.display = 'none';
-      const s = document.getElementById('rsvpSuccess');
-      s.classList.add('show'); s.style.opacity = '0';
-      setTimeout(() => { s.style.transition = 'opacity 0.8s'; s.style.opacity = '1'; }, 10);
-    }, 400);
+
+    const submitBtn = document.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      phone:    document.getElementById('phone').value.trim(),
+      guests:   document.getElementById('guests').value,
+      dietary:  document.getElementById('dietary').value.trim(),
+      notes:    document.getElementById('notes').value.trim(),
+    };
+
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Network response was not ok');
+      const form = document.getElementById('rsvpForm');
+      form.style.transition = 'opacity 0.4s, transform 0.4s';
+      form.style.opacity = '0'; form.style.transform = 'translateY(-10px)';
+      setTimeout(() => {
+        form.style.display = 'none';
+        const s = document.getElementById('rsvpSuccess');
+        s.classList.add('show'); s.style.opacity = '0';
+        setTimeout(() => { s.style.transition = 'opacity 0.8s'; s.style.opacity = '1'; }, 10);
+      }, 400);
+    })
+    .catch(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send My RSVP';
+      alert('There was a problem sending your RSVP. Please try again or contact us directly.');
+    });
   }
 
   document.querySelectorAll('.rsvp-form input, .rsvp-form select').forEach(el => {
