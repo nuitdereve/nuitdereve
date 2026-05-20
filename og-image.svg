@@ -1,0 +1,45 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <radialGradient id="bgGradient" cx="60%" cy="50%">
+      <stop offset="0%" style="stop-color:#7A3010;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B1406;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E0900;stop-opacity:1" />
+    </radialGradient>
+    <style><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Dancing+Script:wght@600&family=Cormorant+Garamond:wght@300;400&display=swap');
+      .title-font { font-family: 'Cinzel', serif; font-weight: 600; }
+      .script-font { font-family: 'Dancing Script', cursive; font-weight: 600; }
+      .body-font { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+    ]]></style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative top stripe -->
+  <line x1="600" y1="0" x2="600" y2="630" stroke="rgba(212,122,58,0.15)" stroke-width="120"/>
+  
+  <!-- Main title -->
+  <text x="600" y="200" text-anchor="middle" class="title-font" font-size="120" fill="#FBF6F0" letter-spacing="8">NUIT</text>
+  <text x="600" y="280" text-anchor="middle" class="title-font" font-size="120" fill="#FBF6F0" letter-spacing="8">DE RÊVE</text>
+  
+  <!-- Gala subtitle -->
+  <text x="600" y="340" text-anchor="middle" class="script-font" font-size="80" fill="#D8D0C8">Gala</text>
+  
+  <!-- Decorative line and diamond -->
+  <line x1="300" y1="380" x2="550" y2="380" stroke="#C47A3A" stroke-width="2"/>
+  <polygon points="600,375 605,380 600,385 595,380" fill="#C47A3A"/>
+  <line x1="650" y1="380" x2="900" y2="380" stroke="#C47A3A" stroke-width="2"/>
+  
+  <!-- Event details -->
+  <text x="600" y="440" text-anchor="middle" class="body-font" font-size="32" fill="#D9A070">Elegance and Heritage</text>
+  
+  <!-- Date and venue -->
+  <text x="600" y="490" text-anchor="middle" class="body-font" font-size="28" fill="#C4A08A">Saturday, June 6, 2026</text>
+  <text x="600" y="525" text-anchor="middle" class="body-font" font-size="24" fill="#C4A08A">The View on the Hudson</text>
+  
+  <!-- Admission badge -->
+  <rect x="450" y="550" width="300" height="60" fill="none" stroke="rgba(196,122,58,0.5)" stroke-width="2"/>
+  <text x="600" y="575" text-anchor="middle" class="title-font" font-size="32" fill="#C47A3A">$175 · Black Tie</text>
+</svg>
